@@ -1,0 +1,92 @@
+/* Design dials: variance 4 (approved layout kept), motion 3, density 4.
+   Fonts are self-hosted (@fontsource), so no visitor data goes to Google. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-primary-black font-sans antialiased; }
+  h1, h2, h3, h4 { @apply font-display font-bold; line-height: 1.08; letter-spacing: 0.005em; }
+  p { max-width: 70ch; }
+  .text-center p, .mx-auto p { margin-left: auto; margin-right: auto; }
+  :focus-visible { outline: 2px solid #1A1A1A; outline-offset: 2px; box-shadow: 0 0 0 5px #F59E0B; }
+}
+
+@layer components {
+  /* Buttons: press feedback 160ms, hover lift only on devices that hover */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.75rem 1.75rem; font-weight: 600; border-radius: 0.25rem;
+    border: 1px solid transparent; cursor: pointer; text-align: center;
+    transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: #1A1A1A; color: #fff; }
+  .btn-secondary { border-color: #1A1A1A; color: #1A1A1A; background: transparent; }
+  .btn-accent { background: #F59E0B; color: #1A1A1A; } /* black on orange = 8.1:1 */
+  .btn-white { background: #fff; color: #1A1A1A; }
+  .btn-outline-light { border-color: #fff; color: #fff; background: transparent; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover { background: #333; transform: translateY(-2px); }
+    .btn-secondary:hover { background: #F5F5F5; }
+    .btn-accent:hover { background: #FBBF24; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35); }
+    .btn-white:hover { background: #F5F5F5; }
+    .btn-outline-light:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn:active { transform: scale(0.97); }
+  }
+
+  .section-title { @apply text-4xl md:text-5xl text-primary-black mb-4; }
+  .eyebrow { @apply text-sm font-semibold text-accent mb-2; }
+
+  .card {
+    background: #fff; border: 1px solid #E5E5E5; border-radius: 2px; overflow: hidden;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+  .card-lift:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09); }
+  .card-photo img { transition: transform 300ms var(--ease-out); }
+  .card-lift:hover .card-photo img { transform: scale(1.04); }
+  .card-accent { border-top: 4px solid #F59E0B; }
+
+  .link-text {
+    @apply font-semibold text-accent underline underline-offset-4 decoration-2 decoration-transparent;
+    transition: text-decoration-color 160ms var(--ease-out);
+  }
+  .link-text:hover { text-decoration-color: currentColor; }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-[#767676] rounded-sm bg-white text-primary-black;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+
+  .photo-fallback {
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #2B2B2B 0%, #1A1A1A 100%); color: #F59E0B;
+  }
+
+  /* Scroll reveal: opacity + small rise, plays once */
+  .reveal { opacity: 0; transform: translateY(14px); }
+  .reveal.is-visible {
+    opacity: 1; transform: none;
+    transition: opacity 500ms var(--ease-out) var(--reveal-delay, 0ms), transform 500ms var(--ease-out) var(--reveal-delay, 0ms);
+  }
+
+  .skip-link {
+    position: absolute; left: 1rem; top: -4rem; z-index: 100; background: #1A1A1A; color: #fff;
+    padding: 0.75rem 1rem; border-radius: 0.25rem;
+  }
+  .skip-link:focus { top: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { transform: none; }
+  .reveal.is-visible { transition: opacity 150ms linear; }
+  .btn, .card, .card-photo img { transition: none; }
+  .btn:active, .card-lift:hover, .card-lift:hover .card-photo img { transform: none; }
+}
