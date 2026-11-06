@@ -1,0 +1,29 @@
+HOW TO ADD CONTENT
+==================
+Everything is edited in src/data/siteData.js. Save the file and the site updates.
+
+ADD A MACHINE
+  1. Put its photo in public/images/equipment/ (4:3 shape, for example 1200x900 JPG).
+  2. In siteData.js, copy any line inside `equipment`, then change name, specs, rate and image.
+  The Equipment page shows all machines. The Home page shows the first six.
+
+ADD A COMPLETED PROJECT
+  1. Put its photo in public/images/projects/ (4:3 shape).
+  2. In siteData.js, copy any line inside `projects` and change title, category, image,
+     location and date. Optional: add  description: 'One sentence about the job.'
+  Cards that share a category appear under the same filter button on the Projects page.
+
+ADD A VIDEO TO A MACHINE OR PROJECT
+  1. Put the MP4 in public/videos/ (for example public/videos/paver.mp4).
+  2. Add  video: '/videos/paver.mp4'  to that machine's or project's line.
+  A "Watch video" button then appears on its card. The video only downloads when a
+  visitor clicks it, so it never slows the page.
+
+VIDEO FILE TIPS
+  - Format: MP4 (H.264 video, AAC audio). Phones record this by default.
+  - Keep each clip under 30 seconds and under 20 MB. Aim for 720p.
+  - Shrink a big clip free at handbrake.fr (preset "Fast 720p30") or with ffmpeg:
+      ffmpeg -i input.mp4 -vf scale=-2:720 -crf 28 -preset slow output.mp4
+  - For long videos, upload to YouTube and link to it instead; large files are slow and
+    can exceed your host's size limit. (An embedded YouTube player sets cookies, so link
+    to it rather than embedding unless you update the Privacy policy.)

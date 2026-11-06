@@ -24,10 +24,9 @@ const quickLinks = [
 export default function Home() {
   return (
     <div>
-      {/* Hero */}
       <section className="relative text-white overflow-hidden">
-        <Photo src={images.hero} alt="An AL-AMEEN paver at work on a road" icon="paver" eager className="absolute inset-0 w-full h-full" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35" aria-hidden="true" />
+        <Photo src={images.hero} alt="A backhoe loader working on a site under a stormy sky" icon="backhoe" eager className="absolute inset-0 w-full h-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-black/85 via-primary-black/65 to-primary-black/35" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32 grid md:grid-cols-5 gap-12 items-center">
           <div className="md:col-span-3">
             <h1 className="text-5xl md:text-7xl mb-6">
@@ -45,7 +44,7 @@ export default function Home() {
           <ul className="md:col-span-2 space-y-3">
             {quickLinks.map((q) => (
               <li key={q.to}>
-                <Link to={q.to} className="flex items-center gap-4 p-4 bg-black/55 border border-white/20 rounded hover:bg-black/70 transition-colors duration-150">
+                <Link to={q.to} className="flex items-center gap-4 p-4 bg-primary-black/55 border border-white/20 rounded hover:bg-primary-black/70 transition-colors duration-150">
                   <Icon name={q.icon} className="text-4xl text-primary-orange shrink-0" />
                   <span className="text-xl font-display font-bold">{q.label}</span>
                 </Link>
@@ -55,7 +54,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
       <section className="bg-white py-12 border-b border-secondary-border" aria-label="Company figures">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {homeStats.map((st, i) => (
@@ -67,7 +65,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
       <section className="bg-secondary-light py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-12">
@@ -77,14 +74,13 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <Reveal><ServiceCard icon="road" image={images.construction.road} title="Construction & civil engineering" description="Roads, civil works and building infrastructure." items={['Road construction', 'Civil engineering works', 'Building infrastructure', 'Site development']} to="/construction" /></Reveal>
-            <Reveal delay={80}><ServiceCard icon="grader" image={equipment[1].image} title="Equipment & machinery" description="Machines for paving, grading, loading and compaction." items={['Paver machines', 'Graders and rollers', 'Payloaders and backhoes', 'Tarboilers']} to="/equipment" /></Reveal>
-            <Reveal delay={160}><ServiceCard icon="bitumen" image={images.materials.bitumen} title="Materials & supply" description="Bitumen, trucks and machines, available in bulk." items={['Bitumen 60/70, MCI, Emotion', 'Truck sales', 'Machine and auto sales', 'Bulk ordering']} to="/materials" /></Reveal>
+            <Reveal><ServiceCard icon="road" title="Construction & civil engineering" description="Roads, civil works and building infrastructure." items={['Road construction', 'Civil engineering works', 'Building infrastructure', 'Site development']} to="/construction" /></Reveal>
+            <Reveal delay={80}><ServiceCard icon="grader" title="Equipment & machinery" description="Machines for paving, grading, loading and compaction." items={['Paver machines', 'Graders and rollers', 'Payloaders and backhoes', 'Tarboilers']} to="/equipment" /></Reveal>
+            <Reveal delay={160}><ServiceCard icon="bitumen" title="Materials & supply" description="Bitumen, trucks and machines, available in bulk." items={['Bitumen 60/70, MCI, Emotion', 'Truck sales', 'Machine and auto sales', 'Bulk ordering']} to="/materials" /></Reveal>
           </div>
         </div>
       </section>
 
-      {/* Projects */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap justify-between items-end gap-4 mb-10">
@@ -99,7 +95,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Equipment */}
       <section className="py-20 bg-secondary-light border-t border-secondary-border">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-12">
@@ -107,11 +102,11 @@ export default function Home() {
             <p className="text-lg text-secondary-text">Rent the machine you need, when you need it.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {equipment.map((item, i) => (
+            {equipment.slice(0, 6).map((item, i) => (
               <Reveal key={item.name} delay={i * 50}>
                 <Link to="/equipment" className="card card-lift block h-full">
                   <div className="card-photo overflow-hidden">
-                    <Photo src={item.image} alt={item.name} icon={item.icon} className="w-full h-32" />
+                    <Photo src={item.image} alt={item.name} icon={item.icon} className="w-full aspect-[4/3]" />
                   </div>
                   <div className="p-4">
                     <h3 className="text-lg">{item.name}</h3>
@@ -127,12 +122,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why us */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="section-title">Why choose AL-AMEEN</h2>
-            <Photo src={images.aboutTeam} alt="The AL-AMEEN team on site" icon="helmet" className="w-full h-80 rounded mt-6" />
+            <Photo src={images.aboutTeam} alt="A crew working beside an asphalt paver on a road" icon="helmet" className="w-full aspect-[4/3] rounded mt-6" />
           </div>
           <ul className="space-y-6">
             {reasons.map((r) => (
@@ -149,7 +143,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* News */}
       <section className="py-20 bg-secondary-light">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="section-title mb-10">Latest news & insights</h2>
@@ -158,8 +151,8 @@ export default function Home() {
               <Reveal key={n.title} delay={i * 70}>
                 <article className="card card-lift h-full">
                   <div className="card-photo overflow-hidden relative">
-                    <Photo src={n.image} alt={n.title} icon="tools" className="w-full h-44" />
-                    {demoContent && <span className="absolute top-3 right-3 bg-white text-primary-black text-xs font-semibold px-2 py-1 rounded">Sample</span>}
+                    <Photo src={n.image} alt={n.alt || n.title} icon="tools" className="w-full aspect-[4/3]" />
+                    {demoContent && n.sample && <span className="absolute top-3 right-3 bg-white text-primary-black text-xs font-semibold px-2 py-1 rounded">Sample</span>}
                   </div>
                   <div className="p-6">
                     <p className="text-sm text-secondary-text mb-1">{n.tag} · {n.date}</p>
@@ -173,7 +166,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 bg-primary-black text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl mb-4">Ready to start your project?</h2>

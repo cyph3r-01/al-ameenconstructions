@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import Icon from './Icon'
 
-// Shows the photo at `src`. If the file is missing, shows a dark panel with an icon,
-// so the page still looks finished until real photos are added.
 export default function Photo({ src, alt, icon = 'helmet', className = '', eager = false }) {
   const [failed, setFailed] = useState(!src)
 

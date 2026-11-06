@@ -1,9 +1,6 @@
 import axios from 'axios'
 import { contact } from '../data/siteData'
 
-// When the Express backend is running, set VITE_API_URL (for example http://localhost:5000)
-// in a .env file and forms post to `${VITE_API_URL}/api/<endpoint>`.
-// Without it, the form opens a ready-written WhatsApp message so no request is lost.
 const API = import.meta.env.VITE_API_URL
 
 export async function submitForm({ endpoint, title, fields, values }) {

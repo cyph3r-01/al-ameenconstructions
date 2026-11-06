@@ -34,7 +34,7 @@ export default function Materials() {
             <ol className="space-y-4 mt-6">
               {steps.map((s, i) => (
                 <li key={s} className="flex gap-4 items-start">
-                  <span className="font-display text-3xl font-bold text-accent leading-none">{i + 1}</span>
+                  <span className="font-display text-3xl font-bold text-accent leading-none w-6 shrink-0">{i + 1}</span>
                   <span className="text-lg">{s}</span>
                 </li>
               ))}

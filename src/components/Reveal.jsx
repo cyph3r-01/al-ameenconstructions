@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-// Fades content in once as it scrolls into view. Uses IntersectionObserver (no scroll listeners).
 export default function Reveal({ children, delay = 0, className = '', as: Tag = 'div' }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)

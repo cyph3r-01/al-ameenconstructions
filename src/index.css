@@ -1,5 +1,3 @@
-/* Design dials: variance 4 (approved layout kept), motion 3, density 4.
-   Fonts are self-hosted (@fontsource), so no visitor data goes to Google. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,12 +11,11 @@
   body { @apply bg-white text-primary-black font-sans antialiased; }
   h1, h2, h3, h4 { @apply font-display font-bold; line-height: 1.08; letter-spacing: 0.005em; }
   p { max-width: 70ch; }
-  .text-center p, .mx-auto p { margin-left: auto; margin-right: auto; }
+  .text-center p { margin-left: auto; margin-right: auto; }
   :focus-visible { outline: 2px solid #1A1A1A; outline-offset: 2px; box-shadow: 0 0 0 5px #F59E0B; }
 }
 
 @layer components {
-  /* Buttons: press feedback 160ms, hover lift only on devices that hover */
   .btn {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 0.75rem 1.75rem; font-weight: 600; border-radius: 0.25rem;
@@ -29,7 +26,7 @@
   .btn:active { transform: scale(0.97); }
   .btn-primary { background: #1A1A1A; color: #fff; }
   .btn-secondary { border-color: #1A1A1A; color: #1A1A1A; background: transparent; }
-  .btn-accent { background: #F59E0B; color: #1A1A1A; } /* black on orange = 8.1:1 */
+  .btn-accent { background: #F59E0B; color: #1A1A1A; }
   .btn-white { background: #fff; color: #1A1A1A; }
   .btn-outline-light { border-color: #fff; color: #fff; background: transparent; }
   @media (hover: hover) and (pointer: fine) {
@@ -69,12 +66,17 @@
     background: linear-gradient(135deg, #2B2B2B 0%, #1A1A1A 100%); color: #F59E0B;
   }
 
-  /* Scroll reveal: opacity + small rise, plays once */
   .reveal { opacity: 0; transform: translateY(14px); }
   .reveal.is-visible {
     opacity: 1; transform: none;
     transition: opacity 500ms var(--ease-out) var(--reveal-delay, 0ms), transform 500ms var(--ease-out) var(--reveal-delay, 0ms);
   }
+
+  .video-dialog {
+    padding: 0; border: 0; border-radius: 4px; background: #1A1A1A;
+    width: min(92vw, 960px); max-width: none; overflow: hidden;
+  }
+  .video-dialog::backdrop { background: rgba(26, 26, 26, 0.82); }
 
   .skip-link {
     position: absolute; left: 1rem; top: -4rem; z-index: 100; background: #1A1A1A; color: #fff;

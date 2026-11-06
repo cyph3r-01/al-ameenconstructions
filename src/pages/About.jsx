@@ -16,7 +16,7 @@ export default function About() {
               {about.story.map((para) => <p key={para}>{para}</p>)}
             </div>
           </div>
-          <Photo src={images.aboutOffice} alt="The AL-AMEEN office in Isheri Igando" icon="building" className="w-full h-80 md:h-96 rounded" />
+          <Photo src={images.aboutWork} alt="An asphalt paver loaded on a trailer" icon="paver" className="w-full aspect-[4/3] rounded" />
         </div>
       </section>
 
@@ -47,7 +47,7 @@ export default function About() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {leaders.map((l) => (
                 <div key={l.name} className="card">
-                  <Photo src={l.image} alt={l.name} icon="helmet" className="w-full h-64" />
+                  <Photo src={l.image} alt={l.name} icon="helmet" className="w-full aspect-[4/5]" />
                   <div className="p-5">
                     <h3 className="text-xl">{l.name}</h3>
                     <p className="text-sm text-secondary-text">{l.role}</p>

@@ -7,7 +7,7 @@ export default function ServiceCard({ icon, image, title, description, items, to
     <div className="card card-lift card-accent flex flex-col h-full">
       {image !== undefined && (
         <div className="card-photo overflow-hidden">
-          <Photo src={image} alt={title} icon={icon} className="w-full h-44" />
+          <Photo src={image} alt={title} icon={icon} className="w-full aspect-[4/3]" />
         </div>
       )}
       <div className="p-7 flex flex-col flex-1">

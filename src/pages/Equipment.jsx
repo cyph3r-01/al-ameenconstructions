@@ -2,6 +2,7 @@ import Button from '../components/Button'
 import PageHero from '../components/PageHero'
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
+import VideoButton from '../components/VideoButton'
 import { equipment, contact, telHref } from '../data/siteData'
 
 const steps = [
@@ -24,13 +25,16 @@ export default function Equipment() {
               <Reveal key={item.name} delay={(i % 3) * 70}>
                 <article className="card card-lift h-full flex flex-col">
                   <div className="card-photo overflow-hidden">
-                    <Photo src={item.image} alt={item.name} icon={item.icon} className="w-full h-52" />
+                    <Photo src={item.image} alt={item.name} icon={item.icon} className="w-full aspect-[4/3]" />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
                     <h3 className="text-2xl mb-1">{item.name}</h3>
                     <p className="text-sm text-secondary-text mb-3">{item.specs}</p>
                     <p className="font-display text-2xl font-bold text-accent mb-5">{item.rate}</p>
-                    <Button to="/contact?form=equipment" className="mt-auto w-full">Inquire now</Button>
+                    <div className="mt-auto space-y-2">
+                      <Button to="/contact?form=equipment" className="w-full">Inquire now</Button>
+                      <VideoButton src={item.video} title={item.name} className="w-full" />
+                    </div>
                   </div>
                 </article>
               </Reveal>
@@ -46,7 +50,7 @@ export default function Equipment() {
             <ol className="space-y-4 mt-6">
               {steps.map((s, i) => (
                 <li key={s} className="flex gap-4 items-start">
-                  <span className="font-display text-3xl font-bold text-accent leading-none">{i + 1}</span>
+                  <span className="font-display text-3xl font-bold text-accent leading-none w-6 shrink-0">{i + 1}</span>
                   <span className="text-lg">{s}</span>
                 </li>
               ))}

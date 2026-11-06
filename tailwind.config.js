@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   future: { hoverOnlyWhenSupported: true },
@@ -6,7 +5,6 @@ export default {
     extend: {
       colors: {
         primary: { black: '#1A1A1A', orange: '#F59E0B', white: '#FFFFFF' },
-        // accent = orange darkened to pass contrast (5.0:1) for text on white
         accent: '#B45309',
         secondary: {
           light: '#FAFAFA',

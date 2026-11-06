@@ -68,6 +68,7 @@ export default function Footer() {
             <p>&copy; {company.copyrightYear} {company.name}. All rights reserved.</p>
             {business.cacNumber && <p>CAC registration: {business.cacNumber}</p>}
             <p className="italic mt-2">{company.motto}</p>
+            <p className="mt-2 text-xs">Icons: Game-icons.net (CC BY 3.0) and Font Awesome Free (CC BY 4.0).</p>
           </div>
         </div>
       </div>
