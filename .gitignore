@@ -1,2 +1,5 @@
 .env.example
 /node_modules
+ASSETS.md
+HOW-TO-ADD-CONTENT.txt
+IMAGES-README.txt
